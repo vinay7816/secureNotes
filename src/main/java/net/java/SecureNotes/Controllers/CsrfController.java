@@ -1,0 +1,16 @@
+package net.java.SecureNotes.Controllers;
+
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@RestController
+public class CsrfController {
+
+	@GetMapping("/api/csrf")
+	public CsrfToken getcsrf(HttpServletRequest request) {
+		return (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+	}
+}
