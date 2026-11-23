@@ -19,7 +19,7 @@ public class AuditController {
 	@Autowired
 	auditlogService auditservice;
 	
-	@GetMapping
+	@GetMapping("/notes")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<AuditLogs> getAllAudits(){
 		return auditservice.getAllUsers();

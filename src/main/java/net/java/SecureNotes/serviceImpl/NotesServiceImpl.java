@@ -24,7 +24,7 @@ public class NotesServiceImpl implements NotesService {
 		Note note =new Note();
 		note.setContent(content);
 		note.setOwnerUsername(username);
-		auditservice.logNoteCreation(username, note.getId());
+		auditservice.logNoteCreation(username, note.getId(),content);
 		return notesRepo.save(note);
 	}
 
@@ -32,7 +32,7 @@ public class NotesServiceImpl implements NotesService {
 	public Note updateNotes(Long id, String username, String content) {
 		Note note=notesRepo.findById(id).orElseThrow(()->new RuntimeException("User Not Found"));
 		note.setContent(content);
-		auditservice.logNoteUpdate(username, id);
+		auditservice.logNoteUpdate(username, id,content);
 		return notesRepo.save(note);
 	}
 

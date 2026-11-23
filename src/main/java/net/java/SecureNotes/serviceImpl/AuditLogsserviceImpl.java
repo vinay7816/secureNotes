@@ -18,9 +18,10 @@ public class AuditLogsserviceImpl implements auditlogService {
 	AuditRepository auditrepo;
 
 	@Override
-	public void logNoteCreation(String username, Long noteId) {
+	public void logNoteCreation(String username, Long noteId,String content) {
 		AuditLogs auditLog=new AuditLogs();
 		auditLog.setAction("Create");
+		auditLog.setNoteContent(content);
 		auditLog.setNoteId(noteId);
 		auditLog.setTimestamp(LocalDateTime.now());
 		auditLog.setUsername(username);
@@ -29,9 +30,10 @@ public class AuditLogsserviceImpl implements auditlogService {
 	}
 
 	@Override
-	public void logNoteUpdate(String username, Long noteId) {
+	public void logNoteUpdate(String username, Long noteId,String content) {
 		AuditLogs auditLog=new AuditLogs();
 		auditLog.setAction("Update");
+		auditLog.setNoteContent(content);
 		auditLog.setNoteId(noteId);
 		auditLog.setTimestamp(LocalDateTime.now());
 		auditLog.setUsername(username);	
